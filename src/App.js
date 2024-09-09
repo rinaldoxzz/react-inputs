@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useRef} from 'react';
+//Em react, é mais comum utilizar useState para capturar os valores dos inputs
+//
 
 function App() {
+
+  const inputRef = useRef(null);
+  const [mensagem, setMensagem] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div>
+    <label>Nome: </label>
+      <input style={{marginLeft: '10px', marginRight: '10px' }} 
+      type='text'
+
+      ref={inputRef}
+
+      //value={nome}
+
+      //Evento onchange realiza uma ação quando a mudança no campo do input
+      //e.target.value faz a mudança do valor do input
+      //onChange={e => setNome(e.target.value)}
+      //inputRef.current.value retorna o valor atual do ref
+      />
+    
+      <button onClick={() => setMensagem(`Olá, ${inputRef.current.value} !!`)}>Mostrar</button>
+      <p>{mensagem}</p>
+   </div>
   );
 }
 
